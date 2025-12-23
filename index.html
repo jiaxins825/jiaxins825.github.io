@@ -3,21 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiaxin's Home</title>
+    <title>Jiaxin | Developer & Researcher</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f7f6; }
-        .box { background: white; padding: 40px; border-radius: 10px; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; }
-        p { color: #666; font-size: 18px; }
-        .btn { display: inline-block; background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+        /* 现代深色风格 */
+        body { margin: 0; padding: 0; background-color: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        /* 顶部导航 */
+        nav { width: 100%; padding: 20px 0; text-align: center; border-bottom: 1px solid #1e293b; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; backdrop-filter: blur(10px); }
+        nav a { color: #94a3b8; text-decoration: none; margin: 0 15px; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: #38bdf8; }
+
+        /* 头部 Hero 区域 */
+        .hero { text-align: center; padding: 80px 20px; max-width: 800px; }
+        .hero h1 { font-size: 3rem; margin: 0; background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.25rem; color: #94a3b8; margin-top: 20px; line-height: 1.6; }
+        .btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 30px; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); background: #7dd3fc; }
+
+        /* 卡片容器 */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; width: 90%; margin-bottom: 50px; }
+        
+        /* 单个卡片 */
+        .card { background: #1e293b; padding: 30px; border-radius: 12px; border: 1px solid #334155; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #38bdf8; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1); }
+        .card h3 { margin-top: 0; color: #f8fafc; font-size: 1.5rem; }
+        .card p { color: #94a3b8; line-height: 1.6; }
+        .tag-container { margin-top: 15px; }
+        .tag { background: #0f172a; color: #38bdf8; padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; margin-right: 5px; border: 1px solid #334155; }
+
+        /* 底部 */
+        footer { margin-top: auto; padding: 40px; color: #475569; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>👋 你好，我是 Jiaxin</h1>
-        <p>这是我的个人网站。</p>
-        <p>🌊 我是 CS 研究生，正在研究 AI 与水文模型的结合。</p>
-        <a href="https://github.com/jiaxins825" class="btn">访问我的 GitHub</a>
+
+    <nav>
+        <a href="#">首页</a>
+        <a href="#projects">项目</a>
+        <a href="https://github.com/jiaxins825">GitHub</a>
+    </nav>
+
+    <div class="hero">
+        <h1>你好，我是 Jiaxin</h1>
+        <p>
+            一名正在探索 AI 边界的 CS 硕士研究生。<br>
+            专注利用 <b>Deep Learning</b> 解锁 <b>Hydrology</b> 的数据密码。
+        </p>
+        <a href="https://github.com/jiaxins825" class="btn">View My GitHub</a>
     </div>
+
+    <div class="grid" id="projects">
+        <div class="card">
+            <h3>🌊 National Water Model</h3>
+            <p>深入研究 NWM 运行机制，探索如何将遥感数据与水文通用规则融合，以优化流域流量预测。</p>
+            <div class="tag-container">
+                <span class="tag">Research</span>
+                <span class="tag">Hydrology</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🧠 LSTM & Deep Learning</h3>
+            <p>构建并对比了三种 LSTM 架构（标准、双分支、物理约束），用于解决复杂的时间序列预测问题。</p>
+            <div class="tag-container">
+                <span class="tag">Python</span>
+                <span class="tag">TensorFlow</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📝 Master's Thesis</h3>
+            <p>利用物理引导的机器学习分析水库出流对下游的影响。正在进行中...</p>
+            <div class="tag-container">
+                <span class="tag">Academic</span>
+                <span class="tag">Writing</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Jiaxin. Built with HTML & CSS.
+    </footer>
+
 </body>
 </html>
