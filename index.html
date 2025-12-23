@@ -3,87 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiaxin | Developer & Researcher</title>
+    <title>Jiaxin | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 现代深色风格 */
-        body { margin: 0; padding: 0; background-color: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        /* --- 1. 全局设置 --- */
+        :root {
+            --primary: #64ffda; /* 亮青色作为强调色 */
+            --bg: #0a192f;      /* 深夜蓝背景 */
+            --text-main: #ccd6f6;
+            --text-sec: #8892b0;
+            --glass: rgba(17, 34, 64, 0.75);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden; /* 防止横向滚动条 */
+        }
+
+        /* --- 2. 动态背景光晕 --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(29, 78, 216, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle, rgba(100, 255, 218, 0.1) 100%, transparent 60%);
+            animation: moveBackground 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- 3. 导航栏 --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
         
-        /* 顶部导航 */
-        nav { width: 100%; padding: 20px 0; text-align: center; border-bottom: 1px solid #1e293b; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; backdrop-filter: blur(10px); }
-        nav a { color: #94a3b8; text-decoration: none; margin: 0 15px; font-weight: 500; transition: 0.3s; }
-        nav a:hover { color: #38bdf8; }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* 头部 Hero 区域 */
-        .hero { text-align: center; padding: 80px 20px; max-width: 800px; }
-        .hero h1 { font-size: 3rem; margin: 0; background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.25rem; color: #94a3b8; margin-top: 20px; line-height: 1.6; }
-        .btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 30px; transition: transform 0.2s; }
-        .btn:hover { transform: scale(1.05); background: #7dd3fc; }
-
-        /* 卡片容器 */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; width: 90%; margin-bottom: 50px; }
+        /* --- 4. 英雄区域 (Hero) --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         
-        /* 单个卡片 */
-        .card { background: #1e293b; padding: 30px; border-radius: 12px; border: 1px solid #334155; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: #38bdf8; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1); }
-        .card h3 { margin-top: 0; color: #f8fafc; font-size: 1.5rem; }
-        .card p { color: #94a3b8; line-height: 1.6; }
-        .tag-container { margin-top: 15px; }
-        .tag { background: #0f172a; color: #38bdf8; padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; margin-right: 5px; border: 1px solid #334155; }
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
 
-        /* 底部 */
-        footer { margin-top: auto; padding: 40px; color: #475569; font-size: 0.9rem; }
+        .intro { color: var(--primary); font-family: monospace; font-size: 1.1rem; margin-bottom: 20px; }
+        h1 { font-size: clamp(40px, 8vw, 80px); font-weight: 800; color: #e6f1ff; line-height: 1.1; }
+        h2 { font-size: clamp(30px, 6vw, 60px); font-weight: 700; color: var(--text-sec); line-height: 1.1; margin-bottom: 20px; }
+        .bio { max-width: 540px; font-size: 1.1rem; color: var(--text-sec); margin-bottom: 50px; }
+        
+        /* 打字机特效光标 */
+        .typing::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .btn-main {
+            padding: 15px 30px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .btn-main:hover { background: rgba(100, 255, 218, 0.1); }
+
+        /* --- 5. 版块通用样式 --- */
+        section { padding: 100px 0; }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: clamp(26px, 5vw, 32px);
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #e6f1ff;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 300px;
+            height: 1px;
+            background: #233554;
+            margin-left: 20px;
+        }
+
+        /* --- 6. 项目卡片 (Glassmorphism) --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #112240;
+            padding: 30px;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            position: relative;
+            top: 0;
+        }
+        
+        .project-card:hover { transform: translateY(-7px); }
+        
+        .folder-icon { color: var(--primary); font-size: 40px; margin-bottom: 20px; }
+        .project-card h3 { color: #e6f1ff; font-size: 1.4rem; margin-bottom: 10px; }
+        .project-card p { color: var(--text-sec); font-size: 0.95rem; margin-bottom: 20px; }
+        
+        .tech-list { display: flex; gap: 15px; font-family: monospace; font-size: 0.8rem; color: var(--text-sec); margin-top: auto; }
+
+        /* --- 7. 底部 --- */
+        footer { text-align: center; padding: 20px; color: var(--text-sec); font-family: monospace; font-size: 0.8rem; }
+        
+        /* 手机适配 */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; } /* 手机版简单处理，隐藏菜单 */
+            .section-title::after { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#">首页</a>
-        <a href="#projects">项目</a>
-        <a href="https://github.com/jiaxins825">GitHub</a>
+        <div class="logo">J.X.</div>
+        <div class="nav-links">
+            <a href="#about">关于</a>
+            <a href="#projects">研究</a>
+            <a href="#contact">联系</a>
+        </div>
     </nav>
 
-    <div class="hero">
-        <h1>你好，我是 Jiaxin</h1>
-        <p>
-            一名正在探索 AI 边界的 CS 硕士研究生。<br>
-            专注利用 <b>Deep Learning</b> 解锁 <b>Hydrology</b> 的数据密码。
-        </p>
-        <a href="https://github.com/jiaxins825" class="btn">View My GitHub</a>
-    </div>
+    <div class="container">
+        <header>
+            <div class="intro">Hi, my name is</div>
+            <h1>Jiaxin.</h1>
+            <h2 class="typing-text">I build things with <span style="color:var(--primary)" id="typewriter"></span><span class="typing"></span></h2>
+            <p class="bio">
+                我是一名计算机科学硕士研究生。目前专注于利用 <b>Deep Learning (LSTM)</b> 解决 <b>Hydrology</b> 领域的复杂问题，致力于探索数据与物理规则的完美融合。
+            </p>
+            <a href="https://github.com/jiaxins825" class="btn-main">Check my GitHub</a>
+        </header>
 
-    <div class="grid" id="projects">
-        <div class="card">
-            <h3>🌊 National Water Model</h3>
-            <p>深入研究 NWM 运行机制，探索如何将遥感数据与水文通用规则融合，以优化流域流量预测。</p>
-            <div class="tag-container">
-                <span class="tag">Research</span>
-                <span class="tag">Hydrology</span>
+        <section id="about">
+            <h2 class="section-title">01. About Me</h2>
+            <div style="color: var(--text-sec); font-size: 1.1rem;">
+                <p>你好！我叫 Jiaxin，我对通过代码解决现实世界的科学问题充满热情。</p>
+                <p>最近我正在研究 <b style="color:var(--primary)">National Water Model (NWM)</b>，试图通过引入遥感数据来校准模型，分析水库出流对下游的影响。</p>
+                <br>
+                <p>最近我主要使用的技术栈：</p>
+                <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-family: monospace; margin-top: 10px;">
+                    <li><i class="fas fa-caret-right" style="color:var(--primary)"></i> Python</li>
+                    <li><i class="fas fa-caret-right" style="color:var(--primary)"></i> TensorFlow</li>
+                    <li><i class="fas fa-caret-right" style="color:var(--primary)"></i> LSTM / GRU</li>
+                    <li><i class="fas fa-caret-right" style="color:var(--primary)"></i> Git & GitHub</li>
+                </ul>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <h3>🧠 LSTM & Deep Learning</h3>
-            <p>构建并对比了三种 LSTM 架构（标准、双分支、物理约束），用于解决复杂的时间序列预测问题。</p>
-            <div class="tag-container">
-                <span class="tag">Python</span>
-                <span class="tag">TensorFlow</span>
-            </div>
-        </div>
+        <section id="projects">
+            <h2 class="section-title">02. My Research</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>Physics-Guided LSTM</h3>
+                    <p>构建了一个融合物理约束的 LSTM 模型，不仅提高了预测精度，还保证了水文过程的物理一致性。</p>
+                    <div class="tech-list">
+                        <span>Python</span>
+                        <span>Keras</span>
+                        <span>Science</span>
+                    </div>
+                </div>
 
-        <div class="card">
-            <h3>📝 Master's Thesis</h3>
-            <p>利用物理引导的机器学习分析水库出流对下游的影响。正在进行中...</p>
-            <div class="tag-container">
-                <span class="tag">Academic</span>
-                <span class="tag">Writing</span>
+                <div class="project-card">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>NWM Analysis Tool</h3>
+                    <p>开发了一套工具链，用于解析 National Water Model 的输出数据，并与实际观测站点的流量进行可视化对比。</p>
+                    <div class="tech-list">
+                        <span>Data Viz</span>
+                        <span>Matplotlib</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>Remote Sensing Data</h3>
+                    <p>利用卫星遥感数据提取水体面积，反演水库水位变化，为无资料地区的水文模拟提供数据支持。</p>
+                    <div class="tech-list">
+                        <span>Satellite</span>
+                        <span>Processing</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section id="contact" style="text-align: center; padding-bottom: 50px;">
+            <h2 class="section-title" style="justify-content: center; margin-left: 0;">03. What's Next?</h2>
+            <h2 style="color: #e6f1ff;">Get In Touch</h2>
+            <p style="color: var(--text-sec); max-width: 600px; margin: 0 auto 50px;">
+                我现在正在完善我的硕士论文，并准备 CET-6 考试。如果你对我的研究感兴趣，或者有相关的问题想探讨，欢迎随时联系我！
+            </p>
+            <a href="mailto:your-email@example.com" class="btn-main">Say Hello</a>
+        </section>
     </div>
 
     <footer>
-        &copy; 2025 Jiaxin. Built with HTML & CSS.
+        <p>Designed & Built by Jiaxin</p>
     </footer>
 
-</body>
-</html>
+    <script>
+        const words = ["Python.", "AI Models.", "Hydrology."];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const element = document.getElementById("typewriter");
+            const word = words[i];
+            let c = 0;
+            
+            // 这是一个简单的模拟循环效果
+            // 为了保证代码简洁，这里用 CSS 动画配合简单的文字切换
+            //
