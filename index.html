@@ -3,347 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欧阳文宇 | 教师主页</title>
+    <title>个人主页 | Template</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- 1. 全局设计：稳重、学术蓝 --- */
+        /* --- 1. 核心变量 (想换颜色改这里) --- */
         :root {
-            --primary: #0056b3;  /* 深邃的学术蓝 */
-            --accent: #e6f2ff;   /* 浅蓝背景 */
-            --text: #333;
-            --gray: #666;
-        }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: var(--text); background: #f9f9f9; margin: 0; line-height: 1.6; }
-        
-        /* --- 2. 布局容器 --- */
-        .container { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.05); margin-top: 30px; margin-bottom: 30px; }
-
-        /* --- 3. 左侧侧边栏 (个人信息) --- */
-        .sidebar { flex: 1; min-width: 280px; background: #f4f7fa; padding: 40px 30px; text-align: center; border-right: 1px solid #eee; }
-        .avatar { width: 150px; height: 150px; background-color: #ddd; border-radius: 50%; margin: 0 auto 20px; border: 5px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
-        /* 这里用 FontAwesome 的图标代替照片，如果有真实照片可以替换 img 标签 */
-        .avatar i { font-size: 80px; line-height: 140px; color: #fff; background: var(--primary); width: 100%; height: 100%; display: block; }
-        
-        .name { font-size: 24px; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
-        .title { color: var(--primary); font-weight: 600; margin-bottom: 20px; }
-        .contact-info { text-align: left; font-size: 14px; margin-top: 30px; line-height: 2; color: #555; }
-        .contact-info i { width: 25px; color: var(--primary); text-align: center; }
-
-        /* --- 4. 右侧主内容 --- */
-        .main-content { flex: 3; padding: 40px 50px; }
-        
-        /* 章节样式 */
-        section { margin-bottom: 40px; }
-        h2 { font-size: 20px; color: #2c3e50; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; }
-        h2 i { margin-right: 10px; color: var(--primary); }
-
-        /* 列表项样式 */
-        .resume-item { margin-bottom: 20px; padding-left: 20px; border-left: 3px solid #eee; transition: 0.3s; }
-        .resume-item:hover { border-left-color: var(--primary); }
-        .item-title { font-weight: bold; font-size: 16px; color: #333; }
-        .item-meta { font-size: 13px; color: #888; margin-bottom: 8px; }
-        .item-desc { font-size: 14px; color: #555; }
-
-        /* 标签样式 */
-        .tag { display: inline-block; background: var(--accent); color: var(--primary); padding: 3px 10px; border-radius: 4px; font-size: 12px; margin-right: 5px; margin-bottom: 5px; }
-
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            .container { flex-direction: column; margin: 0; }
-            .sidebar { border-right: none; border-bottom: 1px solid #eee; }
-            .main-content { padding: 30px 20px; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <aside class="sidebar">
-        <div class="avatar">
-            <i class="fas fa-user-tie"></i> 
-        </div>
-        <h1 class="name">欧阳文宇</h1>
-        <p class="title">讲师 / 博士 (Ph.D.)</p>
-        
-        <div class="contact-info">
-            <div><i class="fas fa-university"></i> 水利工程学院</div>
-            <div><i class="fas fa-envelope"></i> ouyang@example.com</div>
-            <div><i class="fas fa-map-marker-alt"></i> 办公室：水电楼 305</div>
-            <div><i class="fab fa-github"></i> github.com/ouyangwenyu</div>
-        </div>
-        
-        <div style="margin-top: 30px; text-align: left;">
-            <p style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">研究领域：</p>
-            <span class="tag">AI 水文模型</span>
-            <span class="tag">梯级调度</span>
-            <span class="tag">系统开发</span>
-        </div>
-    </aside>
-
-    <main class="main-content">
-        
-        <section>
-            <h2><i class="fas fa-user"></i> 个人简介 (Biography)</h2>
-            <p style="font-size: 15px; color: #444;">
-                欧阳文宇，博士，现任职高校教师。本科及硕士毕业于<b>华中科技大学</b>水电与数字化工程学院，博士就读于<b>大连理工大学</b>水资源与防洪研究所。
-            </p>
-            <p style="font-size: 15px; color: #444; margin-top: 10px;">
-                长期致力于将计算机技术与水利工程相结合，擅长<b>Java/Python</b>全栈开发。主要研究方向包括梯级水库联合调度、水文预报系统开发及深度学习在水文学中的应用。
-            </p>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-graduation-cap"></i> 教育背景 (Education)</h2>
-            <div class="resume-item">
-                <div class="item-title">大连理工大学 | 水文学与水资源工程</div>
-                <div class="item-meta">博士研究生 (Ph.D.) | 建设工程学部水利学院</div>
-            </div>
-            <div class="resume-item">
-                <div class="item-title">华中科技大学 | 水利工程</div>
-                <div class="item-meta">硕士 (保研) | 水电与数字化工程学院</div>
-            </div>
-            <div class="resume-item">
-                <div class="item-title">华中科技大学 | 水利水电工程</div>
-                <div class="item-meta">本科 (B.E.) | 水电与数字化工程学院</div>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-briefcase"></i> 主持及参与项目 (Projects)</h2>
-            
-            <div class="resume-item">
-                <div class="item-title">观音阁水库长距离输水工程调度管理系统</div>
-                <div class="item-desc">项目软件系统框架负责人。负责系统架构设计与核心模块开发。</div>
-            </div>
-            
-            <div class="resume-item">
-                <div class="item-title">国电电力水情测报分析与调度系统</div>
-                <div class="item-desc">担任软件数据库设计者，编写梯级电站发电计划制作模型。</div>
-            </div>
-
-            <div class="resume-item">
-                <div class="item-title">清江梯级经济调度控制 (HDC) 研究及软件开发</div>
-                <div class="item-desc">编写清江梯级电站超短期负荷预测模型及站内经济运行模型。</div>
-            </div>
-
-            <div class="resume-item">
-                <div class="item-title">学术论文</div>
-                <div class="item-desc" style="font-style: italic; color: #666;">
-                    "Research on joint generation scheduling of cascade hydro plants in the dry season" - Water Science & Technology
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-chalkboard-teacher"></i> 教学与技能 (Teaching & Skills)</h2>
-            <p style="margin-bottom: 15px;">欢迎对 <b>AI + 水利</b> 感兴趣的同学联系我加入课题组。</p>
-            
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <span class="tag"><i class="fab fa-java"></i> Java (日常开发)</span>
-                <span class="tag"><i class="fab fa-python"></i> Python (科研)</span>
-                <span class="tag"><i class="fas fa-calculator"></i> Matlab</span>
-                <span class="tag"><i class="fas fa-database"></i> Database Design</span>
-            </div>
-        </section>
-
-    </main>
-</div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiaxin 老师的教学主页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* --- 全局样式 --- */
-        :root {
-            --primary: #3b82f6;   /* 教师蓝：专业、冷静 */
-            --secondary: #10b981; /* 成功绿：用于重点提示 */
-            --bg: #f8fafc;        /* 护眼灰白背景 */
-            --text: #1e293b;
+            --theme-color: #2563eb; /* 主题色：目前是科技蓝 */
+            --bg-color: #f8fafc;    /* 背景色：护眼灰 */
+            --text-main: #1e293b;   /* 主文字色 */
+            --text-sub: #64748b;    /* 副文字色 */
         }
 
+        /* --- 2. 全局重置 --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
+            padding: 40px 20px;
             line-height: 1.6;
         }
 
-        /* --- 顶部导航 --- */
-        nav {
+        /* --- 3. 布局容器 (A4纸比例感) --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo { font-size: 1.2rem; font-weight: bold; color: var(--primary); }
-        .logo i { margin-right: 8px; }
-        .nav-links a { text-decoration: none; color: #64748b; margin-left: 20px; font-size: 0.95rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* --- 头部欢迎区 --- */
-        header {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.1rem; opacity: 0.9; margin-top: 10px; }
-
-        /* --- 核心容器 --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- 公告栏 (Notice Board) --- */
-        .notice-board {
-            background: #fff;
-            border-left: 5px solid #f59e0b; /* 橙色警告条 */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-        }
-        .notice-icon { font-size: 24px; color: #f59e0b; margin-right: 20px; }
-        .notice-content h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
-        .notice-content p { margin: 0; color: #64748b; font-size: 0.9rem; }
-
-        /* --- 课程卡片区 --- */
-        .section-title { text-align: center; margin-bottom: 30px; color: #334155; font-size: 1.8rem; }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            background: white;
+            padding: 60px;
             border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-        
-        .card-header { height: 6px; background: var(--primary); }
-        .card-body { padding: 25px; }
-        .tag { background: #eff6ff; color: var(--primary); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
-        .card h3 { margin: 15px 0 10px; color: #1e293b; }
-        .card p { color: #64748b; font-size: 0.9rem; margin-bottom: 20px; }
-        
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 8px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .btn:hover { background: var(--primary); color: white; }
 
-        /* --- 底部 --- */
-        footer { text-align: center; padding: 40px; color: #94a3b8; font-size: 0.9rem; border-top: 1px solid #e2e8f0; }
+        /* --- 4. 头部信息 --- */
+        header { text-align: center; margin-bottom: 50px; border-bottom: 1px solid #e2e8f0; padding-bottom: 40px; }
+        .avatar-placeholder {
+            width: 120px; height: 120px;
+            background: #e2e8f0; border-radius: 50%;
+            margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
+            font-size: 50px; color: white;
+        }
+        h1 { margin: 0 0 10px; font-size: 2.2rem; color: var(--text-main); }
+        .role { color: var(--theme-color); font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; }
+        .bio { color: var(--text-sub); max-width: 600px; margin: 0 auto 20px; font-size: 0.95rem; }
+        
+        .contact-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; color: var(--text-sub); font-size: 0.9rem; }
+        .contact-item i { margin-right: 6px; color: var(--theme-color); }
+
+        /* --- 5. 通用板块样式 --- */
+        section { margin-bottom: 50px; }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            color: var(--text-main);
+        }
+        .section-title::before {
+            content: ''; display: block; width: 6px; height: 24px;
+            background: var(--theme-color); margin-right: 12px; border-radius: 3px;
+        }
+
+        /* --- 6. 列表样式 (教育/工作) --- */
+        .item-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .item-main { font-weight: 600; font-size: 1.05rem; }
+        .item-sub { color: var(--text-sub); font-size: 0.9rem; }
+        .item-desc { margin-top: 8px; font-size: 0.95rem; color: #475569; text-align: justify; }
+        
+        .entry { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px dashed #e2e8f0; }
+        .entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+        /* --- 7. 技能标签 --- */
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: #f1f5f9; color: var(--text-main);
+            padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+        }
 
         /* 手机适配 */
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .notice-board { flex-direction: column; text-align: center; }
-            .notice-icon { margin: 0 0 10px 0; }
+        @media (max-width: 600px) {
+            .container { padding: 30px 20px; }
+            .item-row { flex-direction: column; }
+            .item-sub { margin-top: 2px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo"><i class="fas fa-graduation-cap"></i> Jiaxin 老师的课堂</div>
-        <div class="nav-links">
-            <a href="#courses">课程</a>
-            <a href="#resources">资料</a>
-            <a href="#contact">答疑</a>
-        </div>
-    </nav>
-
-    <header>
-        <div class="container">
-            <h1>Welcome to Class!</h1>
-            <p>这里是教学资源发布与学术交流的平台</p>
-            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">专注领域：计算机科学 / 深度学习 / 水文模型</p>
-        </div>
-    </header>
-
     <div class="container">
         
-        <div class="notice-board">
-            <div class="notice-icon"><i class="fas fa-bell"></i></div>
-            <div class="notice-content">
-                <h3>最新通知：关于下周实验课的安排</h3>
-                <p>请同学们提前安装好 Python 环境和 TensorFlow 库，并下载第三章的预习代码。作业提交截止日期延长至本周日。</p>
+        <header>
+            <div class="avatar-placeholder" style="background: var(--theme-color);">
+                <span>姓</span>
             </div>
-        </div>
+            
+            <h1>[你的姓名]</h1>
+            <div class="role">[你的职位 / 身份]</div>
+            <p class="bio">
+                [这里写一句话简介。例如：致力于计算机科学与水文学的交叉研究，热衷于用代码解决实际问题。]
+            </p>
 
-        <h2 class="section-title" id="courses">本学期课程</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-header" style="background: #3b82f6;"></div>
-                <div class="card-body">
-                    <span class="tag">基础课</span>
-                    <h3>Python 程序设计</h3>
-                    <p>适合零基础入门。涵盖 Python 基础语法、数据结构以及简单的科学计算库（Numpy/Pandas）使用。</p>
-                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载课件</a>
+            <div class="contact-row">
+                <div class="contact-item"><i class="fas fa-envelope"></i> [your-email@example.com]</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> [你的学校/单位]</div>
+                <div class="contact-item"><i class="fab fa-github"></i> [github.com/yourname]</div>
+            </div>
+        </header>
+
+        <section>
+            <div class="section-title">教育背景</div>
+            
+            <div class="entry">
+                <div class="item-row">
+                    <div class="item-main">[博士学校名称]</div>
+                    <div class="item-sub">[时间：20xx - 至今]</div>
+                </div>
+                <div class="item-desc">[专业名称] | [研究方向]</div>
+            </div>
+
+            <div class="entry">
+                <div class="item-row">
+                    <div class="item-main">[硕士学校名称]</div>
+                    <div class="item-sub">[时间：20xx - 20xx]</div>
+                </div>
+                <div class="item-desc">[专业名称] | [所获荣誉/奖项]</div>
+            </div>
+
+            <div class="entry">
+                <div class="item-row">
+                    <div class="item-main">[本科学校名称]</div>
+                    <div class="item-sub">[时间：20xx - 20xx]</div>
+                </div>
+                <div class="item-desc">[专业名称]</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">项目与科研</div>
+
+            <div class="entry">
+                <div class="item-row">
+                    <div class="item-main">[项目名称 A]</div>
+                    <div class="item-sub">[担任角色：负责人/核心开发]</div>
+                </div>
+                <div class="item-desc">
+                    [这里简短描述项目做了什么。例如：基于 LSTM 模型开发了流域流量预测系统，提高了预测精度 15%。]
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header" style="background: #10b981;"></div>
-                <div class="card-body">
-                    <span class="tag">进阶课</span>
-                    <h3>深度学习与水文应用</h3>
-                    <p>探索 AI 在地球科学中的应用。重点讲解 LSTM 网络结构、National Water Model 运行机制及代码实战。</p>
-                    <a href="https://github.com/jiaxins825" class="btn"><i class="fab fa-github"></i> 查看代码</a>
+            <div class="entry">
+                <div class="item-row">
+                    <div class="item-main">[项目名称 B]</div>
+                    <div class="item-sub">[技术栈：Python / TensorFlow]</div>
+                </div>
+                <div class="item-desc">
+                    [这里简短描述项目做了什么。例如：利用遥感数据反演水库水位，解决了无资料地区的模拟难题。]
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header" style="background: #8b5cf6;"></div>
-                <div class="card-body">
-                    <span class="tag">研讨班</span>
-                    <h3>学术论文写作</h3>
-                    <p>如何撰写高质量的 CS 领域论文？分享 LateX 模板、图表绘制技巧以及审稿回复策略。</p>
-                    <a href="#" class="btn"><i class="fas fa-book"></i> 阅读材料</a>
+            <div class="entry">
+                <div class="item-row">
+                    <div class="item-main">[论文/成果名称]</div>
+                    <div class="item-sub">[发表期刊/会议]</div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div style="background: white; padding: 40px; border-radius: 12px; text-align: center; margin-bottom: 50px;" id="contact">
-            <h2 style="margin-top: 0; color: #1e293b;">需要答疑？</h2>
-            <p style="color: #64748b; margin-bottom: 20px;">请通过邮件联系我，或在 GitHub 上提 Issue。</p>
-            <a href="mailto:your-email@example.com" class="btn" style="background: #3b82f6; color: white; padding: 12px 30px;">
-                <i class="fas fa-envelope"></i> 发送邮件
-            </a>
-        </div>
+        <section>
+            <div class="section-title">技能与爱好</div>
+            <div class="tags">
+                <span class="tag">[技能 1：Python]</span>
+                <span class="tag">[技能 2：Java]</span>
+                <span class="tag">[技能 3：深度学习]</span>
+                <span class="tag">[技能 4：水文模型]</span>
+                <span class="tag">[技能 5：英语六级]</span>
+                <span class="tag">[爱好：足球]</span>
+            </div>
+        </section>
 
     </div>
-
-    <footer>
-        <p>&copy; 2025 Jiaxin 老师 | 教学用途 | <a href="https://github.com/jiaxins825" style="color: #64748b;">GitHub 主页</a></p>
-    </footer>
 
 </body>
 </html>
