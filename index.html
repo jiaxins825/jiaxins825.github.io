@@ -3,6 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧阳文宇 | 教师主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 1. 全局设计：稳重、学术蓝 --- */
+        :root {
+            --primary: #0056b3;  /* 深邃的学术蓝 */
+            --accent: #e6f2ff;   /* 浅蓝背景 */
+            --text: #333;
+            --gray: #666;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: var(--text); background: #f9f9f9; margin: 0; line-height: 1.6; }
+        
+        /* --- 2. 布局容器 --- */
+        .container { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.05); margin-top: 30px; margin-bottom: 30px; }
+
+        /* --- 3. 左侧侧边栏 (个人信息) --- */
+        .sidebar { flex: 1; min-width: 280px; background: #f4f7fa; padding: 40px 30px; text-align: center; border-right: 1px solid #eee; }
+        .avatar { width: 150px; height: 150px; background-color: #ddd; border-radius: 50%; margin: 0 auto 20px; border: 5px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        /* 这里用 FontAwesome 的图标代替照片，如果有真实照片可以替换 img 标签 */
+        .avatar i { font-size: 80px; line-height: 140px; color: #fff; background: var(--primary); width: 100%; height: 100%; display: block; }
+        
+        .name { font-size: 24px; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .title { color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+        .contact-info { text-align: left; font-size: 14px; margin-top: 30px; line-height: 2; color: #555; }
+        .contact-info i { width: 25px; color: var(--primary); text-align: center; }
+
+        /* --- 4. 右侧主内容 --- */
+        .main-content { flex: 3; padding: 40px 50px; }
+        
+        /* 章节样式 */
+        section { margin-bottom: 40px; }
+        h2 { font-size: 20px; color: #2c3e50; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; }
+        h2 i { margin-right: 10px; color: var(--primary); }
+
+        /* 列表项样式 */
+        .resume-item { margin-bottom: 20px; padding-left: 20px; border-left: 3px solid #eee; transition: 0.3s; }
+        .resume-item:hover { border-left-color: var(--primary); }
+        .item-title { font-weight: bold; font-size: 16px; color: #333; }
+        .item-meta { font-size: 13px; color: #888; margin-bottom: 8px; }
+        .item-desc { font-size: 14px; color: #555; }
+
+        /* 标签样式 */
+        .tag { display: inline-block; background: var(--accent); color: var(--primary); padding: 3px 10px; border-radius: 4px; font-size: 12px; margin-right: 5px; margin-bottom: 5px; }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; margin: 0; }
+            .sidebar { border-right: none; border-bottom: 1px solid #eee; }
+            .main-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="avatar">
+            <i class="fas fa-user-tie"></i> 
+        </div>
+        <h1 class="name">欧阳文宇</h1>
+        <p class="title">讲师 / 博士 (Ph.D.)</p>
+        
+        <div class="contact-info">
+            <div><i class="fas fa-university"></i> 水利工程学院</div>
+            <div><i class="fas fa-envelope"></i> ouyang@example.com</div>
+            <div><i class="fas fa-map-marker-alt"></i> 办公室：水电楼 305</div>
+            <div><i class="fab fa-github"></i> github.com/ouyangwenyu</div>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: left;">
+            <p style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">研究领域：</p>
+            <span class="tag">AI 水文模型</span>
+            <span class="tag">梯级调度</span>
+            <span class="tag">系统开发</span>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <section>
+            <h2><i class="fas fa-user"></i> 个人简介 (Biography)</h2>
+            <p style="font-size: 15px; color: #444;">
+                欧阳文宇，博士，现任职高校教师。本科及硕士毕业于<b>华中科技大学</b>水电与数字化工程学院，博士就读于<b>大连理工大学</b>水资源与防洪研究所。
+            </p>
+            <p style="font-size: 15px; color: #444; margin-top: 10px;">
+                长期致力于将计算机技术与水利工程相结合，擅长<b>Java/Python</b>全栈开发。主要研究方向包括梯级水库联合调度、水文预报系统开发及深度学习在水文学中的应用。
+            </p>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-graduation-cap"></i> 教育背景 (Education)</h2>
+            <div class="resume-item">
+                <div class="item-title">大连理工大学 | 水文学与水资源工程</div>
+                <div class="item-meta">博士研究生 (Ph.D.) | 建设工程学部水利学院</div>
+            </div>
+            <div class="resume-item">
+                <div class="item-title">华中科技大学 | 水利工程</div>
+                <div class="item-meta">硕士 (保研) | 水电与数字化工程学院</div>
+            </div>
+            <div class="resume-item">
+                <div class="item-title">华中科技大学 | 水利水电工程</div>
+                <div class="item-meta">本科 (B.E.) | 水电与数字化工程学院</div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-briefcase"></i> 主持及参与项目 (Projects)</h2>
+            
+            <div class="resume-item">
+                <div class="item-title">观音阁水库长距离输水工程调度管理系统</div>
+                <div class="item-desc">项目软件系统框架负责人。负责系统架构设计与核心模块开发。</div>
+            </div>
+            
+            <div class="resume-item">
+                <div class="item-title">国电电力水情测报分析与调度系统</div>
+                <div class="item-desc">担任软件数据库设计者，编写梯级电站发电计划制作模型。</div>
+            </div>
+
+            <div class="resume-item">
+                <div class="item-title">清江梯级经济调度控制 (HDC) 研究及软件开发</div>
+                <div class="item-desc">编写清江梯级电站超短期负荷预测模型及站内经济运行模型。</div>
+            </div>
+
+            <div class="resume-item">
+                <div class="item-title">学术论文</div>
+                <div class="item-desc" style="font-style: italic; color: #666;">
+                    "Research on joint generation scheduling of cascade hydro plants in the dry season" - Water Science & Technology
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-chalkboard-teacher"></i> 教学与技能 (Teaching & Skills)</h2>
+            <p style="margin-bottom: 15px;">欢迎对 <b>AI + 水利</b> 感兴趣的同学联系我加入课题组。</p>
+            
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span class="tag"><i class="fab fa-java"></i> Java (日常开发)</span>
+                <span class="tag"><i class="fab fa-python"></i> Python (科研)</span>
+                <span class="tag"><i class="fas fa-calculator"></i> Matlab</span>
+                <span class="tag"><i class="fas fa-database"></i> Database Design</span>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jiaxin 老师的教学主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
