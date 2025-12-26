@@ -3,223 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人简历主页</title>
+    <title>Jiaxin's Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- 全局设置 --- */
+        /* --- 🎨 莫兰迪灰粉色系配色 --- */
         :root {
-            --sidebar-bg: #ffc4d6;  /* 左侧深蓝背景 */
-            --main-bg: #ffffff;     /* 右侧白色背景 */
-            --text-light: #ffffff;  /* 左侧文字色 */
-            --text-dark: #333333;   /* 右侧主文字色 */
-            --text-gray: #666666;   /* 右侧副文字色 */
-            --accent: #3498db;      /* 强调色（用于链接或图标） */
+            /* 核心主色：灰粉色 (Dusty Pink) - 用于侧边栏和导航背景 */
+            --primary-bg: #b08796; 
+            
+            /* 页面大背景：极浅的粉白，铺满全屏 */
+            --body-bg: #f9f2f4;
+            
+            /* 强调色：深一点的干枯玫瑰色 - 用于链接和按钮 */
+            --accent: #966b7a;
+            
+            /* 文字颜色 */
+            --text-main: #4a4044;  /* 深暖灰，比纯黑更柔和 */
+            --text-light: #ffffff; /* 反白文字 */
+            --text-gray: #7d6e73;  /* 辅助文字 */
         }
 
+        /* --- 1. 全局布局设置 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f0f2f5; /* 网页最底层的浅灰背景 */
+            background-color: var(--body-bg); /* 背景色铺满 */
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: var(--accent); transition: 0.3s; }
+        a:hover { color: var(--primary-bg); text-decoration: underline; }
+
+        /* --- 2. 顶部导航栏 (Top Navbar) --- */
+        nav {
+            width: 100%;
+            background-color: var(--primary-bg); /* 导航栏颜色 */
+            padding: 15px 40px;
             display: flex;
-            justify-content: center;
-            padding: 40px 20px;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-brand { font-size: 20px; font-weight: 700; color: white; letter-spacing: 1px; }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            color: rgba(255,255,255,0.9); 
+            font-size: 15px; 
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: white; text-decoration: none; opacity: 1; transform: translateY(-2px); }
+
+        /* --- 3. 页面主体容器 (双栏布局) --- */
+        .container {
+            max-width: 1400px; /* 类似 Reference 的宽屏设计 */
+            margin: 0 auto;
+            display: flex;
             min-height: 100vh;
         }
 
-        /* --- 核心容器 (大卡片) --- */
-        .resume-container {
-            display: flex;
-            width: 100%;
-            max-width: 1000px;
-            background: var(--main-bg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden; /* 清除浮动 */
-        }
-
-        /* --- 左侧边栏 --- */
+        /* --- 4. 左侧侧边栏 (Sidebar) --- */
         .sidebar {
-            flex: 1;
-            min-width: 280px;
-            max-width: 320px;
-            background-color: var(--sidebar-bg);
-            color: var(--text-light);
-            padding: 40px 30px;
+            width: 320px; /* 固定宽度 */
+            background-color: #2e282a; /* 深色背景，让左侧更稳重，类似原图的深色底 */
+            /* 如果想要粉色侧边栏，把上面这行换成 background-color: var(--primary-bg); */
+            color: white;
+            padding: 60px 30px;
             text-align: center;
+            flex-shrink: 0; /* 防止被压缩 */
         }
 
-        /* 头像 */
-        .avatar-placeholder {
-            width: 150px; height: 150px;
-            background: #2c4a66; border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.1);
-            margin: 0 auto 25px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 60px; color: var(--text-light);
-            overflow: hidden;
-        }
-        /* 如果有照片，用 <img src="..." class="avatar-placeholder" style="padding:0; border:none;"> 替换 */
-
-        .name { font-size: 28px; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; }
-        .title { font-size: 16px; opacity: 0.8; margin-bottom: 40px; font-weight: 500; }
-
-        /* 联系方式列表 */
-        .contact-list { text-align: left; list-style: none; margin-bottom: 40px; }
-        .contact-list li { margin-bottom: 15px; display: flex; align-items: center; font-size: 14px; }
-        .contact-list i { width: 25px; margin-right: 10px; color: var(--accent); text-align: center; }
-        .contact-list a { color: var(--text-light); text-decoration: none; opacity: 0.9; transition: 0.3s; }
-        .contact-list a:hover { opacity: 1; color: var(--accent); }
-
-        /* 社交图标 */
-        .social-icons { display: flex; justify-content: center; gap: 15px; }
-        .social-btn {
-            width: 35px; height: 35px; border-radius: 50%;
-            background: rgba(255,255,255,0.1); color: var(--text-light);
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: 0.3s;
-        }
-        .social-btn:hover { background: var(--accent); }
-
-
-        /* --- 右侧主内容区 --- */
-        .main-content {
-            flex: 2;
-            padding: 40px 50px;
-            color: var(--text-dark);
-        }
-
-        section { margin-bottom: 40px; }
-
-        /* 栏目标题 */
-        .section-title {
-            font-size: 20px; font-weight: 700; color: var(--sidebar-bg);
-            text-transform: uppercase; letter-spacing: 1px;
-            padding-bottom: 10px; border-bottom: 2px solid #eee;
+        .avatar {
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid rgba(255,255,255,0.2);
             margin-bottom: 25px;
+            background-color: #eee;
+            /* 占位图居中 */
+            display: flex; align-items: center; justify-content: center; font-size: 80px; color: #ccc;
+        }
+        /* 有照片后用 <img src="..." class="avatar"> 替换上面的 div */
+
+        .my-name { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+        .my-role { font-size: 14px; opacity: 0.8; margin-bottom: 40px; font-weight: 300; line-height: 1.6; }
+
+        .sidebar-info { text-align: left; font-size: 14px; margin-top: 30px; }
+        .info-item { margin-bottom: 15px; display: flex; align-items: center; opacity: 0.9; }
+        .info-item i { width: 25px; text-align: center; margin-right: 10px; color: #dcb5c1; } /* 图标粉色点缀 */
+
+        /* --- 5. 右侧内容区 (Main Content) --- */
+        .main-content {
+            flex: 1; /* 占满剩余空间 */
+            padding: 60px 80px;
+            background-color: var(--body-bg);
         }
 
+        /* 欢迎标题 */
+        .welcome-title { font-size: 32px; font-weight: 700; margin-bottom: 20px; color: var(--primary-bg); }
+        
         /* 简介文本 */
-        .about-text { line-height: 1.8; color: var(--text-gray); }
+        .bio-text { font-size: 16px; margin-bottom: 40px; max-width: 800px; text-align: justify; }
 
-        /* 经历/教育列表项 */
-        .timeline-item { margin-bottom: 25px; position: relative; }
-        .timeline-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-        .timeline-role { font-weight: 700; font-size: 16px; }
-        .timeline-date { color: var(--accent); font-weight: 500; font-size: 14px; }
-        .timeline-place { font-style: italic; color: var(--text-gray); font-size: 14px; margin-bottom: 10px; }
-        .timeline-desc { color: var(--text-gray); font-size: 14px; line-height: 1.6; }
+        /* 版块样式 */
+        .section-header { 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px; 
+            border-bottom: 2px solid #e0d0d5; 
+            color: #5d4d53;
+        }
 
-        /* 技能标签 */
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag {
-            background: #eef2f5; color: var(--sidebar-bg);
-            padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: 500;
+        /* 列表样式 (News / Interests) */
+        ul.custom-list { list-style: none; padding-left: 0; margin-bottom: 40px; }
+        ul.custom-list li { 
+            margin-bottom: 12px; 
+            position: relative; 
+            padding-left: 20px; 
+        }
+        ul.custom-list li::before {
+            content: "•";
+            color: var(--primary-bg);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #eadde1;
+            color: #7a5c66;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
         }
 
         /* 移动端适配 */
-        @media (max-width: 768px) {
-            .resume-container { flex-direction: column; margin: 0; }
-            .sidebar { min-width: 100%; max-width: none; padding: 30px 20px; }
-            .main-content { padding: 30px 20px; }
+        @media (max-width: 900px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; padding: 40px 20px; }
+            .main-content { padding: 40px 20px; }
+            nav { padding: 15px 20px; }
+            .nav-links { gap: 15px; font-size: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-container">
+    <nav>
+        <div class="nav-brand">Jiaxin (Alex)</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Publications</a>
+            <a href="#">Projects</a>
+            <a href="#">CV / Résumé</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
         <aside class="sidebar">
-            <div class="avatar-placeholder">
+            <div class="avatar">
                 <i class="fas fa-user"></i>
             </div>
-            <h1 class="name">[你的姓名]</h1>
-            <p class="title">CS 硕士研究生 | AI + 水文研究</p>
+            
+            <h1 class="my-name">Jiaxin (Alex)</h1>
+            <p class="my-role">
+                Ph.D. Candidate (Student)<br>
+                CS Graduate Researcher<br>
+                AI + Hydrology
+            </p>
 
-            <ul class="contact-list">
-                <li><i class="fas fa-envelope"></i> [email@example.com]</li>
-                <li><i class="fas fa-phone"></i> [+86 1xx-xxxx-xxxx]</li>
-                <li><i class="fas fa-map-marker-alt"></i> [学校/城市, 中国]</li>
-                <li>
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/jiaxins825">github.com/jiaxins825</a>
-                </li>
-            </ul>
-
-            <div class="social-icons">
-                <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
-                <a href="mailto:你的邮箱" class="social-btn"><i class="fas fa-envelope"></i></a>
+            <div class="sidebar-info">
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> Beijing / Wuhan, China</div>
+                <div class="info-item"><i class="fas fa-university"></i> University Name</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> your-email@edu.cn</div>
+                <div class="info-item"><i class="fab fa-github"></i> <a href="https://github.com/jiaxins825" style="color:white; text-decoration:underline;">GitHub Profile</a></div>
             </div>
         </aside>
 
-
         <main class="main-content">
-            <section>
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">
-                    [这里写个人简介。例如：我是一名致力于计算机科学与地球科学交叉领域的研究生。专注于利用深度学习技术（如 LSTM）解决复杂的水文科学问题，热衷于通过数据驱动的方法创造实际价值。目前正在备战英语六级，并完善硕士研究课题。]
+            
+            <h1 class="welcome-title">Greetings! I'm Jiaxin 🍺</h1>
+            
+            <div class="bio-text">
+                <p>
+                    你好！Welcome to my homepage. 
+                    <br><br>
+                    I am currently a <b>Graduate Student</b> in Computer Science. My research interest lies at the intersection of <b>Deep Learning</b> and <b>Hydrology</b> (AI for Earth Science).
+                    <br><br>
+                    I enjoy doing research and developing open-source software for <b>Data-centric Trustworthy Machine Learning</b>. Before this, I received my B.S. degree from [Your University].
                 </p>
-            </section>
+            </div>
 
-            <section>
-                <h2 class="section-title">Research & Projects</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-role">基于物理引导的 LSTM 水文模型研究</div>
-                        <div class="timeline-date">202x - 至今</div>
-                    </div>
-                    <div class="timeline-place">硕士核心课题</div>
-                    <div class="timeline-desc">
-                        <ul>
-                            <li>构建了融合物理约束的深度学习模型，提高了模型在无资料地区的泛化能力。</li>
-                            <li>使用 TensorFlow 进行模型训练，并通过 TensorBoard 进行可视化分析对比。</li>
-                        </ul>
-                    </div>
-                </div>
+            <h2 class="section-header">Research Interests</h2>
+            <ul class="custom-list">
+                <li><b>Deep Learning & LSTM:</b> Exploring time-series forecasting in complex physical systems.</li>
+                <li><b>National Water Model (NWM):</b> Integrating physics-guided ML into large-scale hydrological models.</li>
+                <li><b>Remote Sensing Data:</b> Utilizing satellite data for reservoir monitoring and analysis.</li>
+            </ul>
 
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-role">National Water Model (NWM) 优化分析</div>
-                        <div class="timeline-date">202x - 202x</div>
-                    </div>
-                    <div class="timeline-place">参与项目</div>
-                    <div class="timeline-desc">
-                        利用遥感数据校准 NWM 参数，重点分析了水库运行规则对下游流域流量模拟精度的影响。
-                    </div>
-                </div>
-            </section>
+            <h2 class="section-header">What's New <i class="fas fa-rss" style="font-size: 16px; color: var(--primary-bg);"></i></h2>
+            <ul class="custom-list">
+                <li>
+                    <span class="tag">05/2025</span> 
+                    正在准备 <b>CET-6 (English Test)</b>. Fighting! 💪
+                </li>
+                <li>
+                    <span class="tag">01/2025</span> 
+                    Starting my research on <b>Physics-Guided LSTM</b> models.
+                </li>
+                <li>
+                    <span class="tag">12/2024</span> 
+                    Created my personal academic website. (This page!)
+                </li>
+            </ul>
 
-            <section>
-                <h2 class="section-title">Education</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-role">[你的硕士学校名称]</div>
-                        <div class="timeline-date">202x - 至今</div>
-                    </div>
-                    <div class="timeline-place">硕士 (Master) | 计算机科学 / 水利工程</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-role">[你的本科学校名称]</div>
-                        <div class="timeline-date">201x - 202x</div>
-                    </div>
-                    <div class="timeline-place">学士 (Bachelor) | 专业名称</div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-container">
-                    <span class="skill-tag">Python 🐍</span>
-                    <span class="skill-tag">TensorFlow / Keras</span>
-                    <span class="skill-tag">Deep Learning (LSTM)</span>
-                    <span class="skill-tag">Hydrological Modeling</span>
-                    <span class="skill-tag">Git & GitHub</span>
-                    <span class="skill-tag">Data Analysis</span>
-                </div>
-            </section>
+            <h2 class="section-header">Selected Projects</h2>
+            <p>Please check my <a href="https://github.com/jiaxins825">GitHub</a> for more code.</p>
 
         </main>
     </div>
